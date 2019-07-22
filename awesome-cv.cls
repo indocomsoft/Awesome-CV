@@ -277,6 +277,7 @@
 % Defines writer's mobile (optional)
 % Usage: \mobile{<mobile number>}
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
+\newcommand*{\foreignmobile}[1]{\def\@foreignmobile{#1}}
 
 % Defines writer's email (optional)
 % Usage: \email{<email adress>}
@@ -442,6 +443,12 @@
         {%
           \faMobile\acvHeaderIconSep\@mobile%
           \setbool{isstart}{false}%
+        }%
+      \ifthenelse{\isundefined{\@foreignmobile}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \faMobile\acvHeaderIconSep\@foreignmobile%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
